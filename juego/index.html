@@ -1,0 +1,164 @@
+<HTML> 
+<HEAD> 
+<meta charset="UTF-8">
+	<title>Piedra, Papel, Tijera, Lagarto y Spock</title> 
+	<script> 
+	
+		var empates=0;
+		var derrotas=0;
+		var intentos=0;	
+		var victorias=0;
+		function elecciones(jugador,pc)
+		{
+			//jugador piedra
+			if(jugador==1)
+			{ document.getElementById("eleccionJugador").innerHTML="<img src='piedra.png' width='300px'>";}else if(jugador==2)//jugador papel
+			{ document.getElementById("eleccionJugador").innerHTML="<img src='papel.png' width='300px'>";} else if(jugador==3)//jugador tijera
+			{ document.getElementById("eleccionJugador").innerHTML="<img src='tijera.png' width='300px'>";} else if(jugador==4)//jugador lagarto
+			{ document.getElementById("eleccionJugador").innerHTML="<img src='lagarto.png' width='300px'>";}else
+			{ document.getElementById("eleccionJugador").innerHTML="<img src='spock.png' width='300px'>";}//jugador spock
+			
+			//pc piedra
+			if(pc==1)
+			{ document.getElementById("eleccionPC").innerHTML="<img src='piedra.png' width='300px'>";}else if(pc==2)//pc papel
+			{ document.getElementById("eleccionPC").innerHTML="<img src='papel.png' width='300px'>";} else if(pc==3)//pc tijera
+			{ document.getElementById("eleccionPC").innerHTML="<img src='tijera.png' width='300px'>";} else if(pc==4)//pc lagarto
+			{ document.getElementById("eleccionPC").innerHTML="<img src='lagarto.png' width='300px'>";}else
+			{ document.getElementById("eleccionPC").innerHTML="<img src='spock.png' width='300px'>";}//pc spock
+		}
+		
+		
+	   function jugar(eleccion) 
+	   {  	   	  
+			var aleatorio = Math.round(Math.random() * 5 + 1);
+			intentos++;
+			document.getElementById("intentos").innerHTML="Intentos: "+ intentos;
+			elecciones(eleccion,aleatorio);
+			//jugador piedra - pc tijera
+			if( eleccion == 1 && aleatorio == 3)
+			{
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";			
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+			}else if( eleccion == 1 && aleatorio == 2 ) //Jugador Piedra, CPU Papel
+			{ 
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador Perdio";
+				derrotas++;	
+				document.getElementById("derrotas").innerHTML="Derrotas:"+ derrotas;
+			}else if( eleccion == 1 && aleatorio == 4 ) //Jugador Piedra, PC Lagarto
+			{ 
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+			}else if( eleccion == 1 && aleatorio == 5 ) //Jugador Piedra, PC Spock
+			{ 
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: PC ganó";
+			}else if (eleccion == 2 && aleatorio == 3) //Jugador Papel, PC Tijera
+			{
+				derrotas++;	
+				document.getElementById("derrotas").innerHTML="Derrotas:"+ derrotas;
+				document.getElementById("mensaje").innerHTML="Resultado: PC ganó";
+			}else if (eleccion == 2 && aleatorio == 1) //Jugador Papel, PC Piedra
+			{
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó" ;
+			}else if (eleccion == 2 && aleatorio == 4) //Jugador Papel, PC Lagarto
+			{
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";
+			}else if (eleccion == 2 && aleatorio == 5) //Jugador Papel, PC Spock
+			{
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";
+			}else if (eleccion == 3 && aleatorio == 2) //Jugador Tijera, PC Papel
+			{
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";	   
+			}else if(eleccion == 3 && aleatorio == 1)//Jugador Tijera, PC Piedra
+			{
+				derrotas++;	
+				document.getElementById("derrotas").innerHTML="Derrotas:"+ derrotas;
+				document.getElementById("mensaje").innerHTML="Resultado: PC ganó";
+			}else if(eleccion == 3 && aleatorio == 4) //Jugador Tijera, PC Lagarto
+			{
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";
+			}else if(eleccion == 3 && aleatorio == 5) //Jugador Tijera, PC Spock
+			{
+				derrotas++;	
+				document.getElementById("derrotas").innerHTML="Derrotas:"+ derrotas;
+				document.getElementById("mensaje").innerHTML="Resultado: PC ganó";
+			}else if (eleccion == 4 && aleatorio == 2) //Jugador Lagarto, PC Papel
+			{
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";	   
+			}else if(eleccion == 4 && aleatorio == 1) //Jugador Lagarto, PC Piedra
+			{
+				derrotas++;	
+				document.getElementById("derrotas").innerHTML="Derrotas:"+ derrotas;
+				document.getElementById("mensaje").innerHTML="Resultado: PC ganó";
+			}else if(eleccion == 4 && aleatorio == 3) //Jugador Lagarto, PC Tijera
+			{
+				derrotas++;	
+				document.getElementById("derrotas").innerHTML="Derrotas:"+ derrotas;
+				document.getElementById("mensaje").innerHTML="Resultado: PC ganó";
+			}else if(eleccion == 4 && aleatorio == 5) //Jugador Lagarto, PC Spock
+			{		   		
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";
+			}else if (eleccion == 5 && aleatorio == 2) //Jugador Spock, PC Papel
+			{			
+				derrotas++;	
+				document.getElementById("derrotas").innerHTML="Derrotas:"+ derrotas;
+				document.getElementById("mensaje").innerHTML="Resultado: PC ganó";
+			}else if(eleccion == 5 && aleatorio == 1) //Jugador Spock, PC Piedra
+			{
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";
+			}else if(eleccion == 5 && aleatorio == 3) //Jugador Spock, PC Tijera
+			{		    
+				victorias++;
+				document.getElementById("victorias").innerHTML="Victorias:"+ victorias;
+				document.getElementById("mensaje").innerHTML="Resultado: Jugador ganó";
+			}else if(eleccion == 5 && aleatorio == 4) //Jugador Spock, PC Lagarto
+			{
+				derrotas++;	
+				document.getElementById("derrotas").innerHTML="Derrotas:"+ derrotas;
+				document.getElementById("mensaje").innerHTML="Resultado: PC ganó";
+			}else //empate
+			{
+				empates++;
+				document.getElementById("empates").innerHTML="Empates:"+ empates;			
+				document.getElementById("mensaje").innerHTML="Hay empate...";
+			}
+		}
+	</script> 
+</HEAD>
+<BODY"> 
+<center>
+	<table border=2>
+		<tr><th>Opciones</th><th>Elección Jugador</th><th>Elección PC</th></tr>
+		<tr><td><input type="image" src="piedra.png" onClick="jugar(1);"></td><td rowspan=4 align="center" id="eleccionJugador"></td><td align="center" id="eleccionPC" rowspan=4></td></tr>
+		<tr><td><input type="image" src="papel.png"  onClick="jugar(2);"></td></tr>
+		<tr><td><input type="image" src="tijera.png" onClick="jugar(3);"></td></tr>
+		<tr><td><input type="image" src="lagarto.png" onClick="jugar(4);"></td></tr>
+		<tr><td rowspan=3><input type="image" src="spock.png" onClick="jugar(5);"></td><td align="center" colspan=2 id="mensaje">Resultado</td></tr>
+		<tr><td align="center" id="victorias">Victorias: 0</td><td align="center" id="derrotas">Derrotas: 0</td></tr>
+		<tr><td align="center" id="empates">Empates: 0</td><td id="intentos" align="center">Intentos: 0</td></tr>
+	</table>
+</center>
+ 
+</BODY> 
+</HTML> 
+
+	
